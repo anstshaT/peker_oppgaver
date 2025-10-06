@@ -1,8 +1,8 @@
 #include <stdio.h>
-#define LENGTH 20
+#include <string.h>
+#define LENGTH 30
 
 void translate(char string[]);
-int stringLenght(char string[]);
 
 int main()
 {
@@ -14,25 +14,20 @@ int main()
     return 0;
 }
 
-int stringLenght(char string[])
-{
-    int index = 0;
-    while (string[index] != '\0')
-    {
-        index++;
-    }
-
-    return index;
-}
-
 void translate(char string[])
 {
-    int length = 0;
+    int length = strlen(string);
+    char first_el = string[0];
+    char result[length];
 
-    while (string[length] != '\0')
+    for (int i = 1; i < length; i++)
     {
-        length++;
+        result[i - 1] = string[i];
     }
 
-    printf("Lenght is %d", length);
+    result[length - 1] = first_el;
+    result[length] = 'a';
+    result[length + 1] = 'y';
+
+    printf("After changes: %s\n", result);
 }
